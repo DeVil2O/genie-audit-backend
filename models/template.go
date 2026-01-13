@@ -13,10 +13,10 @@ type AutomationTemplate struct {
 	Name               string          `json:"name"`
 	Description        *string         `json:"description,omitempty"`
 	Tags               []string        `json:"tags"`
-	GraphJSON          json.RawMessage `json:"graph_json"`
-	CreatedByProjectID *uuid.UUID      `json:"created_by_project_id,omitempty"`
+	GraphJSON          json.RawMessage `json:"graphJson"`
+	CreatedByProjectID *uuid.UUID      `json:"createdByProjectId,omitempty"`
 	Visibility         string          `json:"visibility"`
 	Version            int             `json:"version"`
-	CreatedAt          time.Time       `json:"created_at"`
-	UpdatedAt          time.Time       `json:"updated_at"`
+	CreatedAt          time.Time       `json:"createdAt"`
+	UpdatedAt          time.Time       `json:"updatedAt"`
 }

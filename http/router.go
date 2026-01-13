@@ -19,8 +19,8 @@ func NewRouter(pool *pgxpool.Pool) *gin.Engine {
 	router.Use(middleware.Timeout(middleware.DefaultTimeout))
 	router.Use(middleware.RequestLogger())
 
-	memStore := stores.NewMemoryStore()
-	svc := service.NewService(memStore)
+	store := stores.NewDBStore(pool)
+	svc := service.NewService(store)
 	templateStore := stores.NewTemplateStore(pool)
 	templateHandler := handlers.NewTemplateHandler(templateStore)
 	coreHandler := handlers.NewCoreHandler(svc)

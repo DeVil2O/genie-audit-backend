@@ -10,34 +10,34 @@ type ProjectRequest struct {
 }
 
 type InboxRequest struct {
-	ProjectID string `json:"project_id"`
+	ProjectID string `json:"projectId"`
 	Name      string `json:"name"`
 }
 
 type AutomationRequest struct {
-	ProjectID string          `json:"project_id"`
-	InboxID   *string         `json:"inbox_id"`
+	ProjectID string          `json:"projectId"`
+	InboxID   *string         `json:"inboxId"`
 	Name      string          `json:"name"`
 	Enabled   *bool           `json:"enabled"`
-	GraphJSON json.RawMessage `json:"graph_json"`
+	GraphJSON json.RawMessage `json:"graphJson"`
 }
 
 type AutomationUpdateRequest struct {
 	Name      *string          `json:"name"`
 	Enabled   *bool            `json:"enabled"`
-	GraphJSON *json.RawMessage `json:"graph_json"`
-	ProjectID string           `json:"project_id"`
+	GraphJSON *json.RawMessage `json:"graphJson"`
+	ProjectID string           `json:"projectId"`
 }
 
 // Responses
 type ProjectResponse struct {
 	Project *Project `json:"project"`
-	APIKey  string          `json:"api_key"`
+	APIKey  string   `json:"apiKey"`
 }
 
 type InboxResponse struct {
 	Inbox     *Inbox `json:"inbox"`
-	IngestURL string        `json:"ingest_url"`
+	IngestURL string `json:"ingestUrl"`
 }
 
 type AutomationResponse struct {
@@ -46,7 +46,7 @@ type AutomationResponse struct {
 
 type AutomationsResponse struct {
 	Automations []Automation `json:"automations"`
-}	
+}
 
 type EventsResponse struct {
 	Events []Event `json:"events"`

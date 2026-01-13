@@ -32,12 +32,17 @@
       "request": {
         "method": "POST",
         "header": [
-          { "key": "X-API-Key", "value": "{{api_key}}" }
+          { "key": "X-API-Key", "value": "{{api_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
         ],
         "url": {
           "raw": "{{base_url}}/v1/projects",
           "host": ["{{base_url}}"],
           "path": ["v1", "projects"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"My Project\"\n}"
         }
       }
     },
@@ -56,7 +61,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"My Inbox\"\n}"
+          "raw": "{\n  \"projectId\": \"{{project_id}}\",\n  \"name\": \"My Inbox\"\n}"
         }
       }
     },
@@ -68,9 +73,12 @@
           { "key": "X-API-Key", "value": "{{api_key}}" }
         ],
         "url": {
-          "raw": "{{base_url}}/v1/inboxes",
+          "raw": "{{base_url}}/v1/inboxes?project_id={{project_id}}",
           "host": ["{{base_url}}"],
-          "path": ["v1", "inboxes"]
+          "path": ["v1", "inboxes"],
+          "query": [
+            { "key": "project_id", "value": "{{project_id}}" }
+          ]
         }
       }
     },
@@ -89,7 +97,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"Sample Automation\",\n  \"inbox_id\": \"{{inbox_id}}\",\n  \"graph_json\": {\"nodes\": [], \"edges\": []}\n}"
+          "raw": "{\n  \"projectId\": \"{{project_id}}\",\n  \"name\": \"Sample Automation\",\n  \"inboxId\": \"{{inbox_id}}\",\n  \"graphJson\": {\"nodes\": [], \"edges\": []}\n}"
         }
       }
     },
@@ -101,9 +109,12 @@
           { "key": "X-API-Key", "value": "{{api_key}}" }
         ],
         "url": {
-          "raw": "{{base_url}}/v1/automations",
+          "raw": "{{base_url}}/v1/automations?project_id={{project_id}}",
           "host": ["{{base_url}}"],
-          "path": ["v1", "automations"]
+          "path": ["v1", "automations"],
+          "query": [
+            { "key": "project_id", "value": "{{project_id}}" }
+          ]
         }
       }
     },
@@ -115,9 +126,12 @@
           { "key": "X-API-Key", "value": "{{api_key}}" }
         ],
         "url": {
-          "raw": "{{base_url}}/v1/automations/{{automation_id}}",
+          "raw": "{{base_url}}/v1/automations/{{automation_id}}?project_id={{project_id}}",
           "host": ["{{base_url}}"],
-          "path": ["v1", "automations", "{{automation_id}}"]
+          "path": ["v1", "automations", "{{automation_id}}"],
+          "query": [
+            { "key": "project_id", "value": "{{project_id}}" }
+          ]
         }
       }
     },
@@ -136,7 +150,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"enabled\": true\n}"
+          "raw": "{\n  \"projectId\": \"{{project_id}}\",\n  \"enabled\": true\n}"
         }
       }
     },
@@ -238,7 +252,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"Sample Flow\",\n  \"description\": \"Demo React Flow graph\",\n  \"tags\": [\"demo\", \"webhook\"],\n  \"graph_json\": {\n    \"nodes\": [\n      {\"id\": \"n1\", \"type\": \"trigger.webhook\", \"data\": {}, \"position\": {\"x\": 0, \"y\": 0}}\n    ],\n    \"edges\": []\n  },\n  \"visibility\": \"private\",\n  \"created_by_project_id\": null\n}"
+          "raw": "{\n  \"name\": \"Sample Flow\",\n  \"description\": \"Demo React Flow graph\",\n  \"tags\": [\"demo\", \"webhook\"],\n  \"graphJson\": {\n    \"nodes\": [\n      {\"id\": \"n1\", \"type\": \"trigger.webhook\", \"data\": {}, \"position\": {\"x\": 0, \"y\": 0}}\n    ],\n    \"edges\": []\n  },\n  \"visibility\": \"private\",\n  \"createdByProjectId\": null\n}"
         }
       }
     },
